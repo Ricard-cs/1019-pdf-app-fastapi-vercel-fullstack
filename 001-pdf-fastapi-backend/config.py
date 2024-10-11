@@ -11,16 +11,20 @@ class Settings(BaseSettings):
     app_name: str = "Full Stack PDF CRUD App"
     AWS_KEY: str
     AWS_SECRET: str
-    AWS_S3_BUCKET: str = "pdf-basic-app"
+    AWS_S3_BUCKET: str = "pdfcursllm"
 
     @staticmethod
     def get_s3_client():
-        return boto3.client(
+        return boto3.client(  
             's3',
             aws_access_key_id=Settings().AWS_KEY,
-            aws_secret_access_key=Settings().AWS_SECRET
+            aws_secret_access_key=Settings().AWS_SECRET,
+            verify=False
+            
         )
 
     class Config:
         env_file = ".env"
         extra = "ignore"
+
+
