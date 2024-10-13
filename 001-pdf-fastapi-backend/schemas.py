@@ -14,3 +14,8 @@ class PDFResponse(BaseModel):
 
     class Config:
         from_attributes = True
+
+
+#For PDF QA    
+class QuestionRequest(BaseModel):
+    question: str
